@@ -1,0 +1,41 @@
+#---------------------------------------------------------------------------*\
+#
+# THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+# EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
+# WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+# 
+# Copyright (c) 1995-1998  Microsoft Corporation
+#
+#  file:  SOURCES
+#  author:  ArulM
+#  purpose: Build the sample shell using BUILD.EXE
+#
+#---------------------------------------------------------------------------*/
+
+TARGETNAME=taskman
+TARGETTYPE=LIBRARY
+RELEASETYPE=OAK
+WINCEOEM=1
+COPYRES=1
+
+RESFILE=minshell.res
+WINCETARGETFILES=$(_RELEASELIBDIR)\$(TARGETNAME).res
+
+CDEFINES=$(CDEFINES) -DFAREAST -DINTERNATIONAL
+
+INCLUDES=..\stubs
+
+TARGETLIBS=$(_COMMONSDKROOT)\lib\$(_CPUINDPATH)\coredll.lib
+
+SOURCES= \
+	minshell.rc \
+	alttab.cpp \
+	minshell.cpp \
+	mindeskt.cpp \
+	mintask.cpp \
+	housekp.cpp \
+	shutils.cpp \
+
+# Rule to copy RES file to common\oak\lib
+WINCETARGETFILES=$(_COMMONOAKROOT)\lib\$(_CPUINDPATH)\$(TARGETNAME).res
+

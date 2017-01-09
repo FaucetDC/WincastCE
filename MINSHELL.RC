@@ -1,0 +1,171 @@
+/*---------------------------------------------------------------------------*\
+ *
+ * THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+ * EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
+ * WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+ * 
+ * Copyright (c) 1995-1998  Microsoft Corporation
+ *
+ *  file:  Wceshell.rc
+ *  author:  ArulM
+ *  purpose: Sample shell resources
+ *
+ *  This sample has dialog templates for both landscape(handheld) & 
+ *  portrait(tablet) form factor devices, and picks one or the other at 
+ *  run-time based on the actual screen size. You can specialize it for a 
+ *  specific device screen-size and save space by eliminating one set of 
+ *  templates.
+ *
+\*---------------------------------------------------------------------------*/
+#include <windows.h>
+#include <commctrl.h>
+#include "minshrc.h"
+#define IDC_STATIC              -1
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialogs
+//
+// Task-manager dialog (landscape/HPC-style)
+//
+IDD_TASK_MANAGER DIALOG DISCARDABLE  0, 0, 254, 100
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | DS_CENTER | DS_3DLOOK
+CAPTION "Task Manager"
+BEGIN
+    LTEXT           "&Active Tasks",IDC_STATIC,7,6,100,10
+    LISTBOX         IDC_LISTBOX,7,17,238,58,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Run",IDC_RUN,7,82,50,14
+    DEFPUSHBUTTON   "Switch &To",IDOK,87,82,50,14
+    PUSHBUTTON      "&End Task",IDC_ENDTASK,141,82,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,195,82,50,14
+END
+
+//
+// Task-manager dialog (portrait/tablet-style)
+//
+IDD_TASK_MANAGER_G DIALOG DISCARDABLE  0, 0, 134, 110
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | DS_CENTER | DS_3DLOOK
+CAPTION "Task Manager"
+BEGIN
+    LTEXT           "&Active Tasks",IDC_STATIC,4,3,100,9
+    LISTBOX         IDC_LISTBOX,4,13,126,57,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "Switch &To",IDOK,15,74,50,14
+    PUSHBUTTON      "&End Task",IDC_ENDTASK,69,74,50,14
+    PUSHBUTTON      "&Run",IDC_RUN,15,92,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,69,92,50,14
+END
+
+//
+// "Really kill app?" confirmation dialog (used on killing hung apps)
+//
+IDD_REALLYKILL DIALOG DISCARDABLE  0, 0, 208, 114
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | DS_CENTER | WS_VISIBLE | WS_SYSMENU
+CAPTION "Terminate Process"
+BEGIN
+    DEFPUSHBUTTON   "&End Task",IDOK,93,93,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,150,93,50,14
+    //ICON            "IDI_EXCLAME",IDC_STATIC,7,7,21,20
+    LTEXT           "This program is not responding. It may be busy, waiting for a response from you, or it may have stopped running.",
+                    IDC_STATIC,36,14,164,28
+    LTEXT           "Select Cancel to ignore and return to Windows CE.\n\nTo close the program immediately, select End Task. You will lose any unsaved information in this program.",
+                    IDC_STATIC,36,45,164,42
+END
+
+//
+// "Really kill app?" confirmation dialog (portrait/tablet-style)
+//
+IDD_REALLYKILL_G DIALOG DISCARDABLE  0, 0, 134, 139
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | DS_CENTER | WS_VISIBLE | WS_SYSMENU
+CAPTION "Terminate Process"
+BEGIN
+    DEFPUSHBUTTON   "&End Task",IDOK,13,115,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,71,115,50,14
+    LTEXT           "This program is not responding. It may be busy, waiting for a response from you, or it may have stopped running.",
+                    IDC_STATIC,8,10,118,38
+    LTEXT           "Select Cancel to ignore and return to Windows CE.\n\nTo close the program immediately, select End Task. You will lose any unsaved information in this program.",
+                    IDC_STATIC,8,51,118,60
+END
+
+//
+// Start-Run dialog (launched from Taskman dialog) -- landscape
+//
+IDD_RUN DIALOG DISCARDABLE  0, 0, 189, 62
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_VISIBLE | DS_SETFOREGROUND | DS_CENTER | DS_3DLOOK | DS_NOIDLEMSG | WS_SYSMENU
+CAPTION "Run"
+BEGIN
+    LTEXT           "Type the name of the program to start.", IDC_STATIC,6,6,152,10
+    LTEXT           "&Open:",IDC_STATIC,6,24,20,10
+    EDITTEXT 		IDC_RUNCMD, 30,22,153,14, WS_TABSTOP | ES_LEFT | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,25,42,44,14
+    PUSHBUTTON      "Cancel",IDCANCEL,73,42,44,14
+    PUSHBUTTON      "&Browse",IDC_BROWSE,121,42,44,14
+END
+
+//
+// Start-Run dialog (launched from Taskman dialog) -- portrait
+//
+IDD_RUN_G DIALOG DISCARDABLE  0, 0, 134, 62
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_VISIBLE | DS_SETFOREGROUND | DS_CENTER | DS_3DLOOK | DS_NOIDLEMSG | WS_SYSMENU
+CAPTION "Run"
+BEGIN
+    LTEXT           "Type the name of the program to start.", IDC_STATIC,6,6,122,10
+    // LTEXT           "&Open:",IDC_STATIC,6,24,20,10
+    EDITTEXT 		IDC_RUNCMD, 6,22,122,14, WS_TABSTOP | ES_LEFT | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,6,42,38,14
+    PUSHBUTTON      "Cancel",IDCANCEL,48,42,38,14
+    PUSHBUTTON      "&Browse",IDC_BROWSE,90,42,38,14
+END
+
+// Strings
+//
+STRINGTABLE 
+BEGIN
+IDS_RUN_ERROR		"Cannot find the specified program (or one of its components). Please make sure the program name and path are correct."
+IDS_BROWSE_TITLE	"Browse"
+IDS_BROWSE_FILTER	"Programs\1*.exe\1All Files\1*.*\1\1" // \1 changed to \0 in code
+END
+
+//
+// Icons used by battery warning dialogs
+//
+IDI_VERYLOW              ICON    DISCARDABLE     "RES\\mverylow.ico"
+IDI_LOWBKUP              ICON    DISCARDABLE     "RES\\blow.ico"
+IDI_VLOWBKUP             ICON    DISCARDABLE     "RES\\bverylow.ico"
+
+//
+// Battery warning dialogs
+//
+IDD_BACKUP_LOW DIALOG DISCARDABLE  0, 0, 269, 58
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU| DS_SETFOREGROUND
+EXSTYLE WS_EX_ABOVESTARTUP
+CAPTION "Backup Battery Low"
+BEGIN
+    ICON            IDI_LOWBKUP,IDC_STATIC,8,7,24,20
+    LTEXT           "Your backup battery is running on low power. Please change the battery at your earliest convenience.\n\nConsult the manufacturer's instructions for directions on replacing the backup battery.",
+                    IDC_STATIC,37,7,214,43
+END
+
+IDD_BACKUP_VLOW DIALOG DISCARDABLE  0, 0, 269, 65
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU| DS_SETFOREGROUND
+EXSTYLE WS_EX_ABOVESTARTUP
+CAPTION "Backup Battery Very Low"
+BEGIN
+    ICON            IDI_VLOWBKUP,IDC_STATIC,8,7,24,20
+    LTEXT           "Your backup battery is very low or missing. Data loss may result from failure to replace the battery very soon.\n\nConsult the manufacturer's instructions for directions on replacing the backup battery.",
+                    IDC_STATIC,38,7,214,50
+END
+
+IDD_MAIN_VLOW DIALOG DISCARDABLE  0, 0, 269, 84
+STYLE DS_MODALFRAME | DS_SETFOREGROUND | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_ABOVESTARTUP
+CAPTION "Main Batteries Very Low"
+BEGIN
+    ICON            IDI_VERYLOW,IDC_STATIC,8,7,24,20
+    LTEXT           "Your main batteries are running very low on power. Please change the batteries at your next opportunity.\n\nConsult the manufacturer's instructions for directions on replacing the main batteries.",
+                    IDC_STATIC,38,7,214,43
+    LTEXT           "Warning: To avoid data loss, be sure to turn off your device before removing the batteries.",
+                    IDC_STATIC,38,52,214,23
+END
+
+
