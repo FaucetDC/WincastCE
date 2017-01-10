@@ -11,7 +11,8 @@
  *  purpose: Implement Sample shell desktop window
  *
 \*---------------------------------------------------------------------------*/
-#include "windows.h"
+#include <windows.h>
+#include <ASSERT.H>
 #include "minshell.h"
 
 

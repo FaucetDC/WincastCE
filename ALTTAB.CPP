@@ -12,13 +12,14 @@
  *
 \*---------------------------------------------------------------------------*/
 
-#include "windows.h"
+#include <../211INC/windows.h>
 #include "windowsx.h"
 #include <sipapi.h>
 #include "minshell.h"
 #include "minshrc.h"
 #include "commdlg.h"
 #include <shlwapi.h>
+#include <../211INC/winbase.h>
 #pragma comment(lib, "Shlwapi.lib")
 
 // Useful macros

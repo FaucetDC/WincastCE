@@ -13,7 +13,7 @@
 \*---------------------------------------------------------------------------*/
 
 #include <windows.h>
-#include <../211INC/winbase.h>
+#include <winbase.h>
 #include <windowsx.h>
 #include "minshell.h"
 #include "minshrc.h"
@@ -206,6 +206,9 @@ setHibernateThreshold:
 // (b) we still have a problem, in which case we should bring the dialog to
 // thw front
 //
+
+
+//////////////////// Not Needed On Dreamcast //////////////////////////////////
 
 void ShowPowerWarning(HWND hwnd, UINT nID);
 LRESULT CALLBACK PowerWarningDlgProc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp);

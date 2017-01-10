@@ -6,69 +6,46 @@
 --------------------Configuration: ceshell - Win32 (WCE SH4) Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\Dan\AppData\Local\Temp\RSP4FCB.tmp" with contents
+Creating command line "rc.exe /l 0x409 /r /fo"WCESH4Dbg/MINSHELL.res" /d "SHx" /d "SH4" /d "_SH4_" /d UNDER_CE=212 /d _WIN32_WCE=212 /d "Dreamcast" /d "UNICODE" /d "DEBUG" "C:\Dreamcast\dev\SHELL\dev2\MINSHELL.RC"" 
+Creating temporary file "C:\Users\Dan\AppData\Local\Temp\RSPE27B.tmp" with contents
 [
-/nologo /MC /W3 /Zi /Od /D _WIN32_WCE=212 /D "Dreamcast" /D "DEBUG" /D "SHx" /D "SH4" /D "_SH4_" /D UNDER_CE=212 /D "UNICODE" /D "_MBCS" /D "_UNICODE" /Fp"WCESH4Dbg/ceshell.pch" /YX /Fo"WCESH4Dbg/" /Fd"WCESH4Dbg/" /Qsh4r7 /Qs /Qfast /c 
-"C:\Dreamcast\dev\SHELL\dev\WincastCE\ALTTAB.CPP"
-"C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP"
-"C:\Dreamcast\dev\SHELL\dev\WincastCE\MINDESKT.CPP"
-"C:\Dreamcast\dev\SHELL\dev\WincastCE\SHUTILS.CPP"
+/nologo /Qsh4 /MC /W3 /Zi /Od /D _WIN32_WCE=212 /D "Dreamcast" /D "DEBUG" /D "SHx" /D "SH4" /D "_SH4_" /D UNDER_CE=212 /D "UNICODE" /D "_MBCS" /D "_UNICODE" /Fp"WCESH4Dbg/ceshell.pch" /YX /Fo"WCESH4Dbg/" /Fd"WCESH4Dbg/" /Qsh4r7 /Qs /Qfast /c 
+"C:\Dreamcast\dev\SHELL\dev2\ALTTAB.CPP"
+"C:\Dreamcast\dev\SHELL\dev2\HOUSEKP.CPP"
+"C:\Dreamcast\dev\SHELL\dev2\MINDESKT.CPP"
+"C:\Dreamcast\dev\SHELL\dev2\MINSHELL.CPP"
+"C:\Dreamcast\dev\SHELL\dev2\MINTASK.CPP"
+"C:\Dreamcast\dev\SHELL\dev2\SHUTILS.CPP"
 ]
-Creating command line "shcl.exe @C:\Users\Dan\AppData\Local\Temp\RSP4FCB.tmp" 
-Creating temporary file "C:\Users\Dan\AppData\Local\Temp\RSP4FCC.tmp" with contents
+Creating command line "shcl.exe @C:\Users\Dan\AppData\Local\Temp\RSPE27B.tmp" 
+Creating temporary file "C:\Users\Dan\AppData\Local\Temp\RSPE27C.tmp" with contents
 [
-coredll.lib /nologo /entry:"WinMainCRTStartup" /base:"0x00010000" /align:"4096" /incremental:yes /pdb:"WCESH4Dbg/ceshell.pdb" /debug /machine:SH4 /nodefaultlib:"libc.lib /nodefaultlib:libcd.lib /nodefaultlib:libcmt.lib /nodefaultlib:libcmtd.lib /nodefaultlib:msvcrt.lib /nodefaultlib:msvcrtd.lib" /out:"WCESH4Dbg/ceshell.exe" /subsystem:windowsce,2.12 /STACK:65536,4096 
+coredllmax.lib shexec.lib shell32.lib corelibc.lib comctl32.lib GWESTUBS.lib gwesmain.lib Wavelib.lib getpower.lib Acmdwrap.lib Msgbeep.lib shlwapi.lib coredll.lib /nologo /entry:"WinMainCRTStartup" /base:"0x00010000" /align:"4096" /incremental:yes /pdb:"WCESH4Dbg/ceshell.pdb" /debug /machine:SH4 /nodefaultlib:"libc.lib /nodefaultlib:libcd.lib /nodefaultlib:libcmt.lib /nodefaultlib:libcmtd.lib /nodefaultlib:msvcrt.lib /nodefaultlib:msvcrtd.lib" /out:"WCESH4Dbg/ceshell.exe" /subsystem:windowsce,2.12 /STACK:65536,4096 
 .\WCESH4Dbg\ALTTAB.OBJ
 .\WCESH4Dbg\HOUSEKP.OBJ
 .\WCESH4Dbg\MINDESKT.OBJ
 .\WCESH4Dbg\MINSHELL.OBJ
 .\WCESH4Dbg\MINTASK.OBJ
 .\WCESH4Dbg\SHUTILS.OBJ
+.\WCESH4Dbg\MINSHELL.res
 ]
-Creating command line "link.exe @C:\Users\Dan\AppData\Local\Temp\RSP4FCC.tmp"
+Creating command line "link.exe @C:\Users\Dan\AppData\Local\Temp\RSPE27C.tmp"
 <h3>Output Window</h3>
+Compiling resources...
 Compiling...
+Command line warning D4025 : overriding '/Qsh4' with '/Qsh4r7'
 ALTTAB.CPP
-C:\Dreamcast\dev\SHELL\dev\WincastCE\ALTTAB.CPP(305) : error C2065: 'MessageBeep' : undeclared identifier
 HOUSEKP.CPP
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(219) : error C2065: 'SYSTEM_POWER_STATUS_EX' : undeclared identifier
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(219) : error C2146: syntax error : missing ';' before identifier 'ps'
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(219) : error C2065: 'ps' : undeclared identifier
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(221) : error C2065: 'GetSystemPowerStatusEx' : undeclared identifier
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(239) : error C2228: left of '.ACLineStatus' must have class/struct/union type
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(241) : error C2228: left of '.ACLineStatus' must have class/struct/union type
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(247) : error C2228: left of '.BatteryFlag' must have class/struct/union type
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(250) : error C2228: left of '.BatteryFlag' must have class/struct/union type
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(254) : error C2065: 'AC_LINE_ONLINE' : undeclared identifier
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(256) : error C2228: left of '.BatteryFlag' must have class/struct/union type
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(258) : error C2065: 'BATTERY_FLAG_HIGH' : undeclared identifier
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(258) : error C2051: case expression not constant
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(264) : error C2065: 'BATTERY_FLAG_LOW' : undeclared identifier
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(264) : error C2051: case expression not constant
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(268) : error C2065: 'BATTERY_FLAG_CRITICAL' : undeclared identifier
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(268) : error C2051: case expression not constant
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(269) : error C2065: 'BATTERY_FLAG_NO_BATTERY' : undeclared identifier
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(269) : error C2051: case expression not constant
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(278) : warning C4065: switch statement contains 'default' but no 'case' labels
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(283) : error C2228: left of '.BackupBatteryFlag' must have class/struct/union type
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(286) : error C2228: left of '.BackupBatteryFlag' must have class/struct/union type
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(289) : error C2228: left of '.BackupBatteryFlag' must have class/struct/union type
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(291) : error C2051: case expression not constant
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(297) : error C2051: case expression not constant
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(303) : error C2051: case expression not constant
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(304) : error C2051: case expression not constant
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(313) : warning C4065: switch statement contains 'default' but no 'case' labels
-C:\Dreamcast\dev\SHELL\dev\WincastCE\HOUSEKP.CPP(402) : error C2065: 'MessageBeep' : undeclared identifier
 MINDESKT.CPP
-C:\Dreamcast\dev\SHELL\dev\WincastCE\MINDESKT.CPP(136) : error C2065: 'ASSERT' : undeclared identifier
+MINSHELL.CPP
+MINTASK.CPP
 SHUTILS.CPP
-C:\Dreamcast\dev\SHELL\dev\WincastCE\SHUTILS.CPP(38) : error C2065: 'ShellExecuteEx' : undeclared identifier
-Error executing shcl.exe.
+Linking...
 
 
 
 <h3>Results</h3>
-ceshell.exe - 29 error(s), 2 warning(s)
+ceshell.exe - 0 error(s), 1 warning(s)
 </pre>
 </body>
 </html>

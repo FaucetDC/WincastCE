@@ -41,6 +41,7 @@ RSC=rc.exe
 # PROP Use_Debug_Libraries 0
 # PROP Output_Dir "WCESH4Rel"
 # PROP Intermediate_Dir "WCESH4Rel"
+# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MC /W3 /Zi /Ox /D _WIN32_WCE=$(CEVersion) /D "$(CEConfigName)" /D "NDEBUG" /D "SHx" /D "SH4" /D "_SH4_" /D UNDER_CE=$(CEVersion) /D "UNICODE" /D "_MBCS" /D "_UNICODE" /YX /Qsh4r7 /Qs /Qfast /Qgvp /c
 # ADD CPP /nologo /MC /W3 /Zi /Ox /D _WIN32_WCE=$(CEVersion) /D "$(CEConfigName)" /D "NDEBUG" /D "SHx" /D "SH4" /D "_SH4_" /D UNDER_CE=$(CEVersion) /D "UNICODE" /D "_MBCS" /D "_UNICODE" /YX /Qsh4r7 /Qs /Qfast /Qgvp /c
@@ -53,7 +54,8 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 coredll.lib /nologo /machine:SH4 /nodefaultlib:"$(CENoDefaultLib)" /subsystem:$(CESubsystem) /STACK:65536,4096
-# ADD LINK32 coredll.lib /nologo /machine:SH4 /nodefaultlib:"$(CENoDefaultLib)" /subsystem:$(CESubsystem) /STACK:65536,4096
+# ADD LINK32 coredllmax.lib shexec.lib shell32.lib corelibc.lib comctl32.lib GWESTUBS.lib gwesmain.lib Wavelib.lib getpower.lib Acmdwrap.lib Msgbeep.lib shlwapi.lib coredll.lib /nologo /machine:SH4 /nodefaultlib:"$(CENoDefaultLib)" /subsystem:$(CESubsystem) /STACK:65536,4096
+# SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "ceshell - Win32 (WCE SH4) Debug"
 
@@ -66,9 +68,10 @@ LINK32=link.exe
 # PROP Use_Debug_Libraries 1
 # PROP Output_Dir "WCESH4Dbg"
 # PROP Intermediate_Dir "WCESH4Dbg"
+# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MC /W3 /Zi /Od /D _WIN32_WCE=$(CEVersion) /D "$(CEConfigName)" /D "DEBUG" /D "SHx" /D "SH4" /D "_SH4_" /D UNDER_CE=$(CEVersion) /D "UNICODE" /D "_MBCS" /D "_UNICODE" /YX /Qsh4r7 /Qs /Qfast /c
-# ADD CPP /nologo /MC /W3 /Zi /Od /D _WIN32_WCE=$(CEVersion) /D "$(CEConfigName)" /D "DEBUG" /D "SHx" /D "SH4" /D "_SH4_" /D UNDER_CE=$(CEVersion) /D "UNICODE" /D "_MBCS" /D "_UNICODE" /YX /Qsh4r7 /Qs /Qfast /c
+# ADD CPP /nologo /Qsh4 /MC /W3 /Zi /Od /D _WIN32_WCE=$(CEVersion) /D "$(CEConfigName)" /D "DEBUG" /D "SHx" /D "SH4" /D "_SH4_" /D UNDER_CE=$(CEVersion) /D "UNICODE" /D "_MBCS" /D "_UNICODE" /YX /Qsh4r7 /Qs /Qfast /c
 # ADD BASE RSC /l 0x409 /r /d "SHx" /d "SH4" /d "_SH4_" /d UNDER_CE=$(CEVersion) /d _WIN32_WCE=$(CEVersion) /d "$(CEConfigName)" /d "UNICODE" /d "DEBUG"
 # ADD RSC /l 0x409 /r /d "SHx" /d "SH4" /d "_SH4_" /d UNDER_CE=$(CEVersion) /d _WIN32_WCE=$(CEVersion) /d "$(CEConfigName)" /d "UNICODE" /d "DEBUG"
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /o "NUL" /win32
@@ -78,7 +81,8 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 coredll.lib /nologo /debug /machine:SH4 /nodefaultlib:"$(CENoDefaultLib)" /subsystem:$(CESubsystem) /STACK:65536,4096
-# ADD LINK32 coredll.lib /nologo /debug /machine:SH4 /nodefaultlib:"$(CENoDefaultLib)" /subsystem:$(CESubsystem) /STACK:65536,4096
+# ADD LINK32 coredllmax.lib shexec.lib shell32.lib corelibc.lib comctl32.lib GWESTUBS.lib gwesmain.lib Wavelib.lib getpower.lib Acmdwrap.lib Msgbeep.lib shlwapi.lib coredll.lib /nologo /debug /machine:SH4 /nodefaultlib:"$(CENoDefaultLib)" /subsystem:$(CESubsystem) /STACK:65536,4096
+# SUBTRACT LINK32 /pdb:none
 
 !ENDIF 
 
@@ -92,26 +96,65 @@ LINK32=link.exe
 # Begin Source File
 
 SOURCE=.\ALTTAB.CPP
+DEP_CPP_ALTTA=\
+	".\minshell.h"\
+	".\minshrc.h"\
+	{$(INCLUDE)}"dbgapi.h"\
+	{$(INCLUDE)}"kfuncs.h"\
+	{$(INCLUDE)}"mkfuncs.h"\
+	{$(INCLUDE)}"mwindbas.h"\
+	{$(INCLUDE)}"pkfuncs.h"\
+	{$(INCLUDE)}"psyscall.h"\
+	{$(INCLUDE)}"pwindbas.h"\
+	{$(INCLUDE)}"sipapi.h"\
+	{$(INCLUDE)}"ST\211INC\mwinbase.h"\
+	{$(INCLUDE)}"ST\211INC\pwinbase.h"\
+	{$(INCLUDE)}"ST\211INC\winbase.h"\
+	{$(INCLUDE)}"ST\211INC\windows.h"\
+	{$(INCLUDE)}"toolhelp.h"\
+	{$(INCLUDE)}"windbase.h"\
+	
 # End Source File
 # Begin Source File
 
 SOURCE=.\HOUSEKP.CPP
+DEP_CPP_HOUSE=\
+	".\minshell.h"\
+	".\minshrc.h"\
+	{$(INCLUDE)}"ST\211INC\battery.h"\
+	
 # End Source File
 # Begin Source File
 
 SOURCE=.\MINDESKT.CPP
+DEP_CPP_MINDE=\
+	".\minshell.h"\
+	
 # End Source File
 # Begin Source File
 
 SOURCE=.\MINSHELL.CPP
+DEP_CPP_MINSH=\
+	".\minshell.h"\
+	{$(INCLUDE)}"keybd.h"\
+	{$(INCLUDE)}"pwinuser.h"\
+	
 # End Source File
 # Begin Source File
 
 SOURCE=.\MINTASK.CPP
+DEP_CPP_MINTA=\
+	".\minshell.h"\
+	{$(INCLUDE)}"keybd.h"\
+	{$(INCLUDE)}"pwinuser.h"\
+	
 # End Source File
 # Begin Source File
 
 SOURCE=.\SHUTILS.CPP
+DEP_CPP_SHUTI=\
+	{$(INCLUDE)}"sipapi.h"\
+	
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -121,6 +164,22 @@ SOURCE=.\SHUTILS.CPP
 # Begin Group "Resource Files"
 
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
+# Begin Source File
+
+SOURCE=.\RES\BLOW.ICO
+# End Source File
+# Begin Source File
+
+SOURCE=.\RES\BVERYLOW.ICO
+# End Source File
+# Begin Source File
+
+SOURCE=.\MINSHELL.RC
+# End Source File
+# Begin Source File
+
+SOURCE=.\RES\MVERYLOW.ICO
+# End Source File
 # End Group
 # Begin Source File
 

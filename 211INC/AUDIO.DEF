@@ -1,0 +1,7 @@
+LIBRARY 	AUDIO
+DESCRIPTION	'Audio Driver MDD Interface'
+EXPORTS
+    AudioPlaySound
+    AudioWaveOutGetVolume
+    AudioWaveOutSetVolume
+    AudioPowerHandler

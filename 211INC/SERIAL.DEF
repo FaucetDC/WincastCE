@@ -1,0 +1,14 @@
+LIBRARY 	SERIAL
+DESCRIPTION	'Serial Driver MDD Interface'
+EXPORTS COM_Init
+	COM_Deinit
+	COM_Open
+	COM_Close
+	COM_Read
+	COM_Write
+	COM_Seek
+	COM_PowerDown
+	COM_PowerUp
+	SerialGetDroppedByteNumber
+	COM_IOControl
+	DetectModem

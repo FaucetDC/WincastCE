@@ -11,13 +11,15 @@
  *  purpose: Utility functions used by sample shell
  *
 \*---------------------------------------------------------------------------*/
-
 #include <windows.h>
-#include <sipapi.h>
-#include "shellapi.h"
-#include "commdlg.h"
 #include <shlwapi.h>
+#include <sipapi.h>
 #pragma comment(lib, "Shell32.lib")
+#pragma comment(lib, "coredll.lib")
+#include <shellapi.h>
+#include "commdlg.h"
+
+
 
 typedef BOOL (WINAPI* LPFNSIP)(SIPINFO*);
 

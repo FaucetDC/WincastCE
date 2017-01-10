@@ -1,0 +1,9 @@
+LIBRARY         KEYBDDR
+DESCRIPTION     'Keybd Driver DLL'
+EXPORTS
+	STDAPI(KeybdDriverInitialize, 4);
+    STDAPI(KeybdDriverPowerHandler, 4);
+	STDAPI(KeybdDriverGetInfo, 12);
+    STDAPI(KeybdDriverSetMode, 12);
+    STDAPI(KeybdDriverInitStates, 12);
+    STDAPI(KeybdDriverVKeyToUnicode, 32);
