@@ -54,7 +54,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 coredll.lib /nologo /machine:SH4 /nodefaultlib:"$(CENoDefaultLib)" /subsystem:$(CESubsystem) /STACK:65536,4096
-# ADD LINK32 coredllmax.lib shexec.lib shell32.lib corelibc.lib comctl32.lib GWESTUBS.lib gwesmain.lib Wavelib.lib getpower.lib Acmdwrap.lib Msgbeep.lib shlwapi.lib coredll.lib /nologo /machine:SH4 /nodefaultlib:"$(CENoDefaultLib)" /subsystem:$(CESubsystem) /STACK:65536,4096
+# ADD LINK32 coredllmax.lib shexec.lib shell32.lib corelibc.lib comctl32.lib GWESTUBS.lib gwesmain.lib Wavelib.lib getpower.lib Acmdwrap.lib Msgbeep.lib shlwapi.lib coredll.lib /nologo /machine:SH4 /nodefaultlib:"$(CENoDefaultLib)" /out:"WCESH4Rel/WincastCE.exe" /subsystem:$(CESubsystem) /STACK:65536,4096
 # SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "ceshell - Win32 (WCE SH4) Debug"
@@ -81,7 +81,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 coredll.lib /nologo /debug /machine:SH4 /nodefaultlib:"$(CENoDefaultLib)" /subsystem:$(CESubsystem) /STACK:65536,4096
-# ADD LINK32 coredllmax.lib shexec.lib shell32.lib corelibc.lib comctl32.lib GWESTUBS.lib gwesmain.lib Wavelib.lib getpower.lib Acmdwrap.lib Msgbeep.lib shlwapi.lib coredll.lib /nologo /debug /machine:SH4 /nodefaultlib:"$(CENoDefaultLib)" /subsystem:$(CESubsystem) /STACK:65536,4096
+# ADD LINK32 coredllmax.lib shexec.lib shell32.lib corelibc.lib comctl32.lib GWESTUBS.lib gwesmain.lib Wavelib.lib getpower.lib Acmdwrap.lib Msgbeep.lib shlwapi.lib coredll.lib /nologo /debug /machine:SH4 /nodefaultlib:"$(CENoDefaultLib)" /out:"WCESH4Dbg/WincastCE.exe" /subsystem:$(CESubsystem) /STACK:65536,4096
 # SUBTRACT LINK32 /pdb:none
 
 !ENDIF 
@@ -99,20 +99,20 @@ SOURCE=.\ALTTAB.CPP
 DEP_CPP_ALTTA=\
 	".\minshell.h"\
 	".\minshrc.h"\
-	{$(INCLUDE)}"dbgapi.h"\
 	{$(INCLUDE)}"kfuncs.h"\
-	{$(INCLUDE)}"mkfuncs.h"\
-	{$(INCLUDE)}"mwindbas.h"\
-	{$(INCLUDE)}"pkfuncs.h"\
-	{$(INCLUDE)}"psyscall.h"\
-	{$(INCLUDE)}"pwindbas.h"\
-	{$(INCLUDE)}"sipapi.h"\
-	{$(INCLUDE)}"ST\211INC\mwinbase.h"\
-	{$(INCLUDE)}"ST\211INC\pwinbase.h"\
-	{$(INCLUDE)}"ST\211INC\winbase.h"\
-	{$(INCLUDE)}"ST\211INC\windows.h"\
-	{$(INCLUDE)}"toolhelp.h"\
-	{$(INCLUDE)}"windbase.h"\
+	
+NODEP_CPP_ALTTA=\
+	".\bgapi.h"\
+	".\funcs.h"\
+	".\indbase.h"\
+	".\ipapi.h"\
+	".\oolhelp.h"\
+	".\syscall.h"\
+	".\T\211INC\mwinbase.h"\
+	".\T\211INC\pwinbase.h"\
+	".\T\211INC\winbase.h"\
+	".\T\211INC\windows.h"\
+	".\windbas.h"\
 	
 # End Source File
 # Begin Source File
@@ -121,7 +121,9 @@ SOURCE=.\HOUSEKP.CPP
 DEP_CPP_HOUSE=\
 	".\minshell.h"\
 	".\minshrc.h"\
-	{$(INCLUDE)}"ST\211INC\battery.h"\
+	
+NODEP_CPP_HOUSE=\
+	".\T\211INC\battery.h"\
 	
 # End Source File
 # Begin Source File
@@ -136,8 +138,10 @@ DEP_CPP_MINDE=\
 SOURCE=.\MINSHELL.CPP
 DEP_CPP_MINSH=\
 	".\minshell.h"\
-	{$(INCLUDE)}"keybd.h"\
-	{$(INCLUDE)}"pwinuser.h"\
+	{$(INCLUDE)}"winuser.h"\
+	
+NODEP_CPP_MINSH=\
+	".\eybd.h"\
 	
 # End Source File
 # Begin Source File
@@ -145,15 +149,17 @@ DEP_CPP_MINSH=\
 SOURCE=.\MINTASK.CPP
 DEP_CPP_MINTA=\
 	".\minshell.h"\
-	{$(INCLUDE)}"keybd.h"\
-	{$(INCLUDE)}"pwinuser.h"\
+	{$(INCLUDE)}"winuser.h"\
+	
+NODEP_CPP_MINTA=\
+	".\eybd.h"\
 	
 # End Source File
 # Begin Source File
 
 SOURCE=.\SHUTILS.CPP
-DEP_CPP_SHUTI=\
-	{$(INCLUDE)}"sipapi.h"\
+NODEP_CPP_SHUTI=\
+	".\ipapi.h"\
 	
 # End Source File
 # End Group
